@@ -18,11 +18,7 @@ public class WelnessApp {
 
             JMSConsumer consumer = jmsContext.createSharedConsumer(topic,"sharedConsumer");
             JMSConsumer consumer2 = jmsContext.createSharedConsumer(topic,"sharedConsumer");
-            consumer.close();
 
-            Thread.sleep(10000);
-
-            consumer = jmsContext.createDurableConsumer(topic,"subscription1");
             Message message = consumer.receive();
             Employee employee = message.getBody(Employee.class);
             System.out.println(employee.getFirstName());
